@@ -1,0 +1,55 @@
+.Navigation {
+    width: 90%;
+    height: 10vh;
+    background: white;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+
+    &__logotype {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        >.logo {
+            width: 45px;
+            height: 45px;
+            background-image: url('../../Images/logo.png');
+            background-size: cover;
+        }
+
+        >.text {
+            color: #1d3260;
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 20px;
+
+            >span {
+                color: #1075bb;
+            }
+        }
+    }
+    > ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        gap: 60px;
+        > li {
+            cursor: pointer;
+            text-decoration: none;
+            color: #1075bb;
+            transition: all .5s ease-in-out;
+            font-weight: bold;
+            border: 1px solid white;
+        }
+        >li:hover {
+            color: #1d3260;
+            border-bottom: 1px solid #1d3260;
+        }
+    }
+}
