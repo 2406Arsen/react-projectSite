@@ -1,8 +1,11 @@
 import React from 'react'
 import Button from '../Button/Button'
 import { Link } from "react-router-dom";
+import NavigationUser from '../NavigationUser/NavigationUser';
+import { INavigation } from '../../module';
 
-const Navigation = () => {
+const Navigation: React.FC<INavigation> = ({ isAuth, activeUser }) => {
+
     const functionForBtn = () => {
 
     }
@@ -19,9 +22,11 @@ const Navigation = () => {
                 <li>Our Blog</li>
                 <li>Happy Clients</li>
             </ul>
-            <Link to={'/sign-in'} style={{ textDecoration: 'none' }}>
-                <Button width={90} height={40} content={'Sign In'} click={functionForBtn} />
-            </Link>
+            {!isAuth
+                ? (<Link to={'/sign-in'} style={{ textDecoration: 'none' }}>
+                    <Button width={90} height={40} content={'Sign In'} click={functionForBtn} />
+                </Link>)
+                : <NavigationUser activeUser={activeUser}/>}
         </div>
     )
 }

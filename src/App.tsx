@@ -13,16 +13,19 @@ import RegistationSucceed from './Pages/Registration/RegistationSucceed';
 function App() {
 
   const [isAuth, setIsAuth] = useState(false)
+  const [activeUser, setActiveUser] = useState({
+    name: '',
+    email: '',
+    password: ''
+  })
+
 
   return (
     <div className="App">
-      <Navigation />
-
-
-
+      <Navigation isAuth={isAuth} activeUser={activeUser} />
 
       <Routes>
-        <Route path='/sign-in' element={<LogIn setIsAuth={setIsAuth} />} />
+        <Route path='/sign-in' element={<LogIn setIsAuth={setIsAuth} setActiveUser={setActiveUser} />} />
         <Route path='/sign-up' element={<Registration />} />
         <Route path='/sign-up/ready' element={<RegistationSucceed />} />
         <Route path='/' element={<Home />} />
@@ -32,7 +35,6 @@ function App() {
           </CheckOut>
         } />
       </Routes>
-
 
       <Footer />
     </div>

@@ -3,7 +3,7 @@ import { IButtonProps } from '../../module'
 
 const Button: React.FC<IButtonProps> = ({ width, height, content, click }) => {
     return (
-        <button onClick={click} className='standartBtn' style={{width:`${width}px`, height:`${height}px`}}>{content}</button>
+        <button disabled onClick={click} className='standartBtn' style={{width:`${width}px`, height:`${height}px`}}>{content}</button>
     )
 }
 

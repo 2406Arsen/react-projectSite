@@ -1,0 +1,35 @@
+.NavigationUser {
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+
+    >.userImage {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: linear-gradient(0deg, rgb(38, 68, 131) 0%, rgba(16, 117, 187, 1) 100%);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    >div {
+        display: flex;
+        flex-direction: column;
+
+        >.userName {
+            color: rgb(38, 68, 131);
+            font-weight: bold;
+        }
+
+        >.userEmail {
+            font-size: 11px;
+            color: rgb(161, 161, 161);
+        }
+    }
+}

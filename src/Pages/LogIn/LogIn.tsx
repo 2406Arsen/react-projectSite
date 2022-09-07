@@ -3,8 +3,8 @@ import { FiUser } from "react-icons/fi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import Button from "../../Components/Button/Button";
 import { Link } from "react-router-dom";
-import { ISignInFormValues } from "../../module";
-const LogIn = ({ setIsAuth }: { setIsAuth: React.Dispatch<React.SetStateAction<boolean>> }) => {
+import { Ilogin, ISignInFormValues } from "../../module";
+const LogIn: React.FC<Ilogin> = ({ setIsAuth, setActiveUser }) => {
 
     const [inputValues, setInputValues] = React.useState<ISignInFormValues>({
         name: '',
@@ -23,8 +23,9 @@ const LogIn = ({ setIsAuth }: { setIsAuth: React.Dispatch<React.SetStateAction<b
         localArray.forEach((user) => {
             if (JSON.parse(user).name === inputValues.name && JSON.parse(user).password === inputValues.password) {
                 setIsAuth(true)
+                setActiveUser(JSON.parse(user))
             } else {
-                console.log(user);
+                console.log('no');
             }
         })
     }
@@ -49,7 +50,7 @@ const LogIn = ({ setIsAuth }: { setIsAuth: React.Dispatch<React.SetStateAction<b
                     <div className="formInput">
                         <RiLockPasswordLine />
                         <input
-                            type="text"
+                            type="password"
                             placeholder="Password"
                             value={inputValues.password}
                             name='password'
@@ -59,7 +60,10 @@ const LogIn = ({ setIsAuth }: { setIsAuth: React.Dispatch<React.SetStateAction<b
                 </div>
 
                 <div className="buttons">
-                    <Button content="Sign In" width={130} height={50} click={signInFunc} />
+                    <Link to={'/'} style={{ textDecoration: 'none' }}>
+                        <Button content="Sign In" width={130} height={50} click={signInFunc} />
+                    </Link>
+
                     <Link to={'/sign-up'} style={{ textDecoration: 'none' }}>
                         <button className="btnSignUp">Sign Up</button>
                     </Link>
