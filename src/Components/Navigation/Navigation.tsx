@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import NavigationUser from '../NavigationUser/NavigationUser';
 import { INavigation } from '../../module';
 
-const Navigation: React.FC<INavigation> = ({ isAuth, activeUser }) => {
+const Navigation: React.FC<INavigation> = ({ isAuth, activeUser, setIsAuth }) => {
 
     const functionForBtn = () => {
 
@@ -19,14 +19,14 @@ const Navigation: React.FC<INavigation> = ({ isAuth, activeUser }) => {
             </Link>
             <ul>
                 <li> <Link to={'/about'} style={{ textDecoration: 'none', color: ' #1075bb ' }}> About Us</Link></li>
-                <li>Our Blog</li>
+                <li><Link to={'/happy-clients'} style={{ textDecoration: 'none', color: ' #1075bb ' }}> Happy Clients</Link></li>
                 <li>Happy Clients</li>
             </ul>
             {!isAuth
                 ? (<Link to={'/sign-in'} style={{ textDecoration: 'none' }}>
                     <Button width={90} height={40} content={'Sign In'} click={functionForBtn} />
                 </Link>)
-                : <NavigationUser activeUser={activeUser}/>}
+                : <NavigationUser activeUser={activeUser} setIsAuth={setIsAuth}/>}
         </div>
     )
 }

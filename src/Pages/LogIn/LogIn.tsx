@@ -4,8 +4,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import Button from "../../Components/Button/Button";
 import { Link } from "react-router-dom";
 import { Ilogin, ISignInFormValues } from "../../module";
-const LogIn: React.FC<Ilogin> = ({ setIsAuth, setActiveUser }) => {
-
+const LogIn: React.FC<Ilogin> = ({ setIsAuth, setActiveUser, activeUser }) => {
     const [inputValues, setInputValues] = React.useState<ISignInFormValues>({
         name: '',
         password: '',
@@ -19,15 +18,26 @@ const LogIn: React.FC<Ilogin> = ({ setIsAuth, setActiveUser }) => {
     }
 
     const signInFunc = () => {
-        const localArray = Object.values(localStorage);
+        const localArray = Object.values(sessionStorage);
+        
+        
         localArray.forEach((user) => {
+            
             if (JSON.parse(user).name === inputValues.name && JSON.parse(user).password === inputValues.password) {
+                sessionStorage.setItem('isAuth', JSON.stringify(true))
                 setIsAuth(true)
                 setActiveUser(JSON.parse(user))
+                console.log(activeUser);
+                console.log(JSON.parse(user));
+                sessionStorage.setItem('activeUser', user)
+                console.log(sessionStorage);
+                
             } else {
-                console.log('no');
+                console.log('chavelacri');
             }
         })
+        
+        // console.log(activeUser);
     }
 
 

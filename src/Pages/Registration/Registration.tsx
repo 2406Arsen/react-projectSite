@@ -84,8 +84,8 @@ const Registration = () => {
     }
 
     const addToData = () => {
-        const idUser = localStorage.length + 1;
-        localStorage.setItem(`user${idUser}`, JSON.stringify(values));
+        const idUser = sessionStorage.length + 1;
+        sessionStorage.setItem(`user${idUser}`, JSON.stringify(values));
     }
 
     return (
@@ -113,8 +113,8 @@ const Registration = () => {
                             <input
                                 type="email"
                                 placeholder="Email adress"
-                                value={email.value}
-                                onChange={email.onChange}
+                                value={values.email}
+                                onChange={handleChange}
                                 onBlur={email.onBlur}
                                 name={'email'}
                             // onChange={handleChange}
@@ -128,16 +128,17 @@ const Registration = () => {
                             <input
                                 type="password"
                                 placeholder="Password"
-                                value={password.value}
+                                value={values.password}
                                 name={'password'}
-                                onChange={password.onChange}
+                                onChange={handleChange}
                                 onBlur={password.onBlur}
                             />
                         </div>
 
-                        {(password.isDirty && password.minLengthError)
-                            && <span style={{}}>Password must contain at least <b>6</b> characters</span>}
+                        {/* {(password.isDirty && password.minLengthError)
+                            && <span style={{}}>Password must contain at least <b>6</b> characters</span>} */}
                     </div>
+                    
                     {/* {(password.isDirty && password.minLengthError) && <div> Минимум нужно 5 симвлоа</div>}
                     {(password.isDirty && password.maxLengthError) && <div> Максимум нужно 7 симвлоа</div>} */}
                 </div>

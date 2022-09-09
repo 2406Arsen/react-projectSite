@@ -5,6 +5,16 @@
     align-items: center;
     gap: 7px;
 
+    >.signOut {
+        cursor: pointer;
+        margin-left: 10px;
+        color: rgb(38, 68, 131);
+        transition: all .5s;
+    }
+    >.signOut:hover {
+        color: rgba(16, 117, 187, 1);
+    }
+
     >.userImage {
         width: 45px;
         height: 45px;
