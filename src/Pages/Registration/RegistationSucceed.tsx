@@ -1,4 +1,3 @@
-import React from 'react'
 import { MdOutlineDoneAll } from "react-icons/md";
 
 const RegistationSucceed = () => {

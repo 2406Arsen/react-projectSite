@@ -13,7 +13,7 @@ const NavigationUser: React.FC<INavigationUser> = ({ setIsAuth }) => {
     const actUser = JSON.parse(sessionStorage.activeUser)
     return (
         <div className='NavigationUser'>
-            {}
+            { }
             <div className="userImage">{actUser.name.split('')[0].toUpperCase()}</div>
             <div>
                 <span className='userName'>{actUser.name}</span>

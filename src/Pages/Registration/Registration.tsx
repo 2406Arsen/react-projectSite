@@ -1,89 +1,31 @@
-import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { FiUser } from "react-icons/fi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { HiOutlineMail } from "react-icons/hi";
 import Button from "../../Components/Button/Button";
-import { IFormInputValues, INavigation } from '../../module';
+import { IFormInputValues } from '../../module';
 import { Link } from "react-router-dom";
-
-const useValidation = (value: string, validations: any) => {
-
-    const [isEmptyError, setIsEmptyError] = React.useState(true);
-    const [minLengthError, setMinLengthError] = React.useState(false)
-    const [maxLengthError, setMaxLengthError] = React.useState(false)
-
-
-    useEffect(() => {
-
-        for (const validation in validations) {
-
-            switch (validation) {
-
-                case 'minLength':
-                    value.length < validations[validation] ? setMinLengthError(true) : setMinLengthError(false)
-                    break;
-                case 'maxLength':
-                    value.length > validations[validation] ? setMaxLengthError(true) : setMaxLengthError(false)
-                    break;
-                case 'isEmpty':
-                    value ? setIsEmptyError(false) : setIsEmptyError(true);
-                    break;
-            }
-        }
-
-    }, [value])
-
-    return {
-        isEmptyError,
-        minLengthError,
-        maxLengthError
-    }
-}
-
-const useInput = (initialValue: any, validations: any) => {
-
-    const [value, setValue] = React.useState(initialValue)
-    const [isDirty, setIsDirty] = React.useState(true)
-    const valid = useValidation(value, validations)
-
-
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
-    }
-
-    const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-    }
-
-    return {
-        value,
-        onChange,
-        onBlur,
-        isDirty,
-        ...valid
-    }
-}
+import { useInput } from '../../Utils/hooks/useInput';
 
 const Registration = () => {
 
     const email = useInput('', { isEmpty: true, minLength: 3, maxLength: 8 });
     const password = useInput('', { isEmpty: true, minLength: 6, maxLength: 7 })
 
-
-    const [values, setValues] = React.useState<IFormInputValues>({
+    const [values, setValues] = useState<IFormInputValues>({
         name: '',
         email: '',
         password: '',
     })
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setValues((prev) => ({
             ...prev,
             [e.target.name]: e.target.value
         }))
     }
 
-    const addToData = () => {
+    const addToData = (): void => {
         const idUser = sessionStorage.length + 1;
         sessionStorage.setItem(`user${idUser}`, JSON.stringify(values));
     }
@@ -113,8 +55,8 @@ const Registration = () => {
                             <input
                                 type="email"
                                 placeholder="Email adress"
-                                value={values.email}
-                                onChange={handleChange}
+                                value={email.value}
+                                onChange={email.onChange}
                                 onBlur={email.onBlur}
                                 name={'email'}
                             // onChange={handleChange}
@@ -138,7 +80,7 @@ const Registration = () => {
                         {/* {(password.isDirty && password.minLengthError)
                             && <span style={{}}>Password must contain at least <b>6</b> characters</span>} */}
                     </div>
-                    
+
                     {/* {(password.isDirty && password.minLengthError) && <div> Минимум нужно 5 симвлоа</div>}
                     {(password.isDirty && password.maxLengthError) && <div> Максимум нужно 7 симвлоа</div>} */}
                 </div>

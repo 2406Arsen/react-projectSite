@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from './Components/Footer/Footer';
 import Navigation from './Components/Navigation/Navigation';
 import AboutUs from './Pages/AboutUs/AboutUs';
@@ -9,37 +9,24 @@ import CheckOut from './Components/CheckOut/CheckOut';
 import LogIn from './Pages/LogIn/LogIn';
 import Registration from './Pages/Registration/Registration';
 import RegistationSucceed from './Pages/Registration/RegistationSucceed';
-import axios from 'axios'
 import Clients from './Pages/Clients/Clients';
+import { checkSessionIsAuth } from './Utils/checkSessionIsAuth';
+import { IFormInputValues } from './module';
+import { getUsersData } from './Api/Api';
 
 function App() {
-  const checkSessionIsAuth = () => {
-    if (sessionStorage.hasOwnProperty('isAuth')) {
-      return true
-    }
-    return false
-  }
 
   const [isAuth, setIsAuth] = useState(checkSessionIsAuth())
-  console.log(isAuth);
 
+  const activeUserFromStorage = sessionStorage.getItem('activeUser')
 
-  const [data, setData] = useState(null)
-  const [activeUser, setActiveUser] = useState({
-    name: '',
-    email: '',
-    password: ''
-  })
-  useEffect(() => {
-    axios.get('users.json')
-      .then((res) => {
-        localStorage.setItem('comments', JSON.stringify(res.data))
-      }).catch((e) => {
-        console.error(e);
-      })
-  }, [])
+  const [activeUser, setActiveUser] = useState(
+    activeUserFromStorage
+      ? JSON.parse(activeUserFromStorage) as IFormInputValues
+      : null
+  )
 
-
+  useEffect(() => { getUsersData() }, [])
 
 
   return (
@@ -47,7 +34,13 @@ function App() {
       <Navigation isAuth={isAuth} activeUser={activeUser} setIsAuth={setIsAuth} />
 
       <Routes>
-        <Route path='/sign-in' element={<LogIn setIsAuth={setIsAuth} activeUser={activeUser} setActiveUser={setActiveUser} />} />
+        <Route path='/sign-in' element={
+          <LogIn setIsAuth={setIsAuth}
+            activeUser={activeUser}
+            setActiveUser={setActiveUser}
+          />
+        }
+        />
         <Route path='/sign-up' element={<Registration />} />
         <Route path='/sign-up/ready' element={<RegistationSucceed />} />
         <Route path='/' element={<Home />} />

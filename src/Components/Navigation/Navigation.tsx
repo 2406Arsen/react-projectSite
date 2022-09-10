@@ -26,7 +26,7 @@ const Navigation: React.FC<INavigation> = ({ isAuth, activeUser, setIsAuth }) =>
                 ? (<Link to={'/sign-in'} style={{ textDecoration: 'none' }}>
                     <Button width={90} height={40} content={'Sign In'} click={functionForBtn} />
                 </Link>)
-                : <NavigationUser activeUser={activeUser} setIsAuth={setIsAuth}/>}
+                : <NavigationUser setIsAuth={setIsAuth} />}
         </div>
     )
 }
