@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import CheckOut from './Components/CheckOut/CheckOut';
 import LogIn from './Pages/LogIn/LogIn';
 import Registration from './Pages/Registration/Registration';
-import RegistationSucceed from './Pages/Registration/RegistationSucceed';
+import RegistrationSucceed from './Pages/Registration/RegistrationSucceed';
 import Clients from './Pages/Clients/Clients';
 import { checkSessionIsAuth } from './Utils/checkSessionIsAuth';
 import { IFormInputValues } from './module';
@@ -42,7 +42,7 @@ function App() {
         }
         />
         <Route path='/sign-up' element={<Registration />} />
-        <Route path='/sign-up/ready' element={<RegistationSucceed />} />
+        <Route path='/sign-up/ready' element={<RegistrationSucceed />} />
         <Route path='/' element={<Home />} />
         <Route path='happy-clients' element={<Clients />} />
         <Route path='/about' element={

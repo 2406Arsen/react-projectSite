@@ -1,0 +1,28 @@
+.RegistrationSucceed {
+	width: 400px;
+	background: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin: 0 auto;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px 40px 45px;
+	> .icon {
+		color: #1075bb;
+		font-size: 50px;
+	}
+	> .title {
+		color: #1075bb;
+		font-size: 19px;
+	}
+	> .context {
+		color: #1075bb;
+		font-size: 15px;
+		margin-top: 5px;
+		> span {
+			font-weight: bold;
+			cursor: pointer;
+		}
+	}
+}

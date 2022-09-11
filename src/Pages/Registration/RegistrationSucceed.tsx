@@ -1,9 +1,9 @@
 import { MdOutlineDoneAll } from "react-icons/md";
 
-const RegistationSucceed = () => {
+const RegistrationSucceed = () => {
     return (
         <div className="page">
-            <div className='RegistationSucceed'>
+            <div className='RegistrationSucceed'>
                 <div className="icon">
                     <MdOutlineDoneAll />
                 </div>
@@ -18,4 +18,4 @@ const RegistationSucceed = () => {
     )
 }
 
-export default RegistationSucceed
+export default RegistrationSucceed
