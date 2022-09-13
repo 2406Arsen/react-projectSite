@@ -13,6 +13,8 @@ import Clients from './Pages/Clients/Clients';
 import { checkSessionIsAuth } from './Utils/checkSessionIsAuth';
 import { IFormInputValues } from './module';
 import { getUsersData } from './Api/Api';
+import Memoisation from './Pages/Memoisation/Memoisation';
+import MemoisationFunctions from './Pages/Memoisation/MemoisationFunctions';
 
 function App() {
 
@@ -45,6 +47,8 @@ function App() {
         <Route path='/sign-up/ready' element={<RegistrationSucceed />} />
         <Route path='/' element={<Home />} />
         <Route path='happy-clients' element={<Clients />} />
+        <Route path='/memoisation' element={<Memoisation />} />
+        <Route path='/memoisationFunction' element={<MemoisationFunctions />} />
         <Route path='/about' element={
           <CheckOut isAuth={isAuth}>
             <AboutUs />

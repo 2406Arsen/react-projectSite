@@ -31,13 +31,14 @@ export interface INavigation {
 export interface INavigationUser {
 	setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
 }
-export interface ISelfClientProps {
+
+export interface ISelfClient {
 	fullName: string
 	id: number
 	comment: string
 	job: string
 	img: string
 }
-export interface ISelfClient {
-	userCom: ISelfClientProps
+export interface ISelfClientProps {
+	userCom: ISelfClient
 }

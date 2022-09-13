@@ -1,7 +1,7 @@
 import React from 'react'
-import { ISelfClient } from '../../module'
+import { ISelfClientProps } from '../../module'
 
-const SelfClient: React.FC<ISelfClient> = ({ userCom }) => {
+const SelfClient: React.FC<ISelfClientProps> = ({ userCom }) => {
     return (
         <div className='SelfClient'>
             <div className="clientInfo">
