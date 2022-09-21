@@ -15,6 +15,7 @@ import { IFormInputValues } from './module';
 import { getUsersData } from './Api/Api';
 import Memoisation from './Pages/Memoisation/Memoisation';
 import MemoisationFunctions from './Pages/Memoisation/MemoisationFunctions';
+import MemoContext from './Pages/Memoisation/MemoContext';
 
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
         <Route path='/sign-up/ready' element={<RegistrationSucceed />} />
         <Route path='/' element={<Home />} />
         <Route path='happy-clients' element={<Clients />} />
-        <Route path='/memoisation' element={<Memoisation />} />
+        <Route path='/memoisation' element={<MemoContext />} />
         <Route path='/memoisationFunction' element={<MemoisationFunctions />} />
         <Route path='/about' element={
           <CheckOut isAuth={isAuth}>

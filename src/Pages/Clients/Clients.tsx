@@ -1,4 +1,3 @@
-import React from 'react'
 import { ISelfClient } from '../../module';
 import SelfClient from './SelfClient'
 

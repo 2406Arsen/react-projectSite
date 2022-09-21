@@ -10,7 +10,6 @@ const MemoisationFunctions = () => {
     }, [])
 
     useEffect(() => {
-
         greeting()
 
     }, [greeting])

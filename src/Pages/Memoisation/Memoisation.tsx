@@ -1,18 +1,17 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useContext } from 'react'
 import Button from './Button';
 import ChildComponent from './ChildComponent';
+import { MemoisationContext } from './MemoContext';
 
 const createUser = (firstName: string, lastName: string) => {
     console.log('log');
-
     return { firstName, lastName }
 }
 
 const Memoisation = () => {
+    const { counter, setCounter } = useContext(MemoisationContext)!
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
-    const [counter, setCounter] = useState(0)
-    const [childCounter, setChildCounter] = useState(0)
 
     const user = useMemo(() => JSON.stringify(createUser(firstName, lastName)), [firstName, lastName])
     return (
@@ -26,9 +25,8 @@ const Memoisation = () => {
             minHeight: '400px'
         }}>
             <Button
-                setCounter={setCounter}
-                setChildCounter={setChildCounter}
-            />
+                // setChildCounter={setChildCounter}
+                setCounter={setCounter} />
             <input
                 type="text"
                 placeholder="type first name"
@@ -46,7 +44,7 @@ const Memoisation = () => {
 
             <span> counter {counter}</span>
 
-            <ChildComponent childCounter={childCounter} />
+            <ChildComponent />
         </div>
 
     )

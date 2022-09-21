@@ -1,12 +1,14 @@
-import { memo, FC } from 'react'
+import { memo } from 'react'
+import Child2 from './Child2'
 
-interface IChildComponentProps {
-    childCounter: number
-}
 
-const ChildComponent: FC<IChildComponentProps> = memo(({ childCounter }) => {
+
+const ChildComponent = memo(() => {
     return (
-        <div>child counter {childCounter}</div>
+        <div style={{ backgroundColor: 'red' }}>
+            child
+            <Child2 />
+        </div>
     )
 })
 
