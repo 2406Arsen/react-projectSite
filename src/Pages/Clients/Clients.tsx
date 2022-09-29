@@ -2,7 +2,7 @@ import { ISelfClient } from '../../module';
 import SelfClient from './SelfClient'
 
 const Clients = () => {
-  const dataComments: ISelfClient[] = JSON.parse(localStorage.comments);
+  const dataComments: ISelfClient[] = JSON.parse(localStorage.getItem('comments')!);
 
 
 
@@ -12,7 +12,7 @@ const Clients = () => {
         <span className='ClientsTitle'>Happy Clients about us</span>
         <div className="clientsComs">
           {dataComments.map((user) =>
-            <SelfClient userCom={user} key={user.id}  />
+            <SelfClient userCom={user} key={user.id} />
           )}
         </div>
       </div>
