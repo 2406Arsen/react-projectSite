@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ISelfClient } from '../module'
 
 export interface IPost {
 	userId: number
@@ -9,10 +10,10 @@ export interface IPost {
 
 type TGetPostsResponse = IPost[]
 
-export const getUsersData = (): Promise<void> =>
+export const getUsersData = (): Promise<ISelfClient[]> =>
 	axios
 		.get('users.json')
-		.then((res) => localStorage.setItem('comments', JSON.stringify(res.data)))
+		.then((res) => res.data)
 		.catch((e) => console.error(e))
 
 export const getPosts = (): Promise<TGetPostsResponse> =>

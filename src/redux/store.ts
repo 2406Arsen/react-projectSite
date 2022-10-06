@@ -11,4 +11,4 @@ const reducers = combineReducers({
 
 export const store = createStore(reducers, applyMiddleware(thunk))
 
-export type RootState = ReturnType<typeof store.getState>
+// export type RootState = ReturnType<typeof store.getState>

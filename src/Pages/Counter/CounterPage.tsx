@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { counterDecrementAction, counterIncrementAction } from "../../redux/counter/actions"
-import { RootState } from "../../redux/store"
+// import { RootState } from "../../redux/store"
 
 const CounterPage = () => {
 
     const dispatch = useDispatch()
 
-    const { count } = useSelector((state: RootState) => state.counter)
+    const { count } = useSelector((state: any) => state.counter)
 
 
     return (

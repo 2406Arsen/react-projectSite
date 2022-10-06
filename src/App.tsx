@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import {
+  // useEffect, 
+  useState
+} from 'react';
 import Footer from './Components/Footer/Footer';
 import Navigation from './Components/Navigation/Navigation';
 import AboutUs from './Pages/AboutUs/AboutUs';
@@ -31,7 +34,7 @@ function App() {
       : null
   )
 
-  useEffect(() => { getUsersData() }, [])
+  // useEffect(() => { getUsersData() }, [])
 
 
   return (

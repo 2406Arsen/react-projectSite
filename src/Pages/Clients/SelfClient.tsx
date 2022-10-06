@@ -2,7 +2,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { ISelfClientProps } from '../../module'
-import { setCurrentClientAction } from '../../redux/clients/action'
+// import { setCurrentClientAction } from '../../redux/clients/action'
+import { setCurrentClient } from '../../store/features/clients/clientsSlice'
 
 const SelfClient: React.FC<ISelfClientProps> = ({ userCom }) => {
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ const SelfClient: React.FC<ISelfClientProps> = ({ userCom }) => {
             <br />
 
             <button onClick={() => {
-                dispatch(setCurrentClientAction(userCom))
+                dispatch(setCurrentClient(userCom))
                 navigate(`${userCom.id}`)
             }}>Navigate to client page </button>
         </div>
