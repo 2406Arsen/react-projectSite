@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from 'react'
 import Button from '../../Components/Button/Button'
 import { FiGithub } from "react-icons/fi";
 import { BsInstagram } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsLightningCharge } from "react-icons/bs";
-import { getPosts, IPost } from '../../Api/Api';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react'
+import { receivePosts } from '../../store/features/clients/clientsSlice';
+import { AppDispatch } from '../../store';
+import { useAppDispatch } from '../../store/hook';
 
 const Home = () => {
-    const [postsData, setPostsData] = useState<IPost[] | null>(null)
-    const getAllPosts = async () => {
-        try {
-            const res = await getPosts()
-            setPostsData(res)
-            console.log("🚀 res", res)
-        } catch (e) {
 
-        }
-    }
+    const dispatch: AppDispatch = useDispatch()
+
     useEffect(() => {
-        getAllPosts()
-    }, [])
+        dispatch(receivePosts())
+    }, [dispatch])
+
 
 
     return (
@@ -104,7 +101,6 @@ const Home = () => {
 
                 </div>
             </div>
-            <div >{postsData?.map(({ id, title }) => <p>{id}:{title}</p>)}</div>
         </>
     )
 }

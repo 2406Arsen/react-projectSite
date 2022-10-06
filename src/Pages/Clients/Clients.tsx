@@ -10,7 +10,7 @@ import SelfClient from './SelfClient'
 const Clients = () => {
   const dispatch = useAppDispatch()
   // const { clients } = useSelector((state: RootState) => state.clients)
-  const { clients, currentClient } = useAppSelector(({ clients, anotherSLice }) => ({
+  const { clients, } = useAppSelector(({ clients }) => ({
     clients: clients.clients,
     currentClient: clients.currentClient
   }), shallowEqual)

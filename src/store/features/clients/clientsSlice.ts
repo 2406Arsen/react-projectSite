@@ -1,15 +1,27 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import axios from 'axios'
 import { ISelfClient } from '../../../module'
 
 interface IClientsState {
 	currentClient: ISelfClient
 	clients: ISelfClient[]
+	posts: IPosts[]
 }
 
 // export interface IClientsAction {
 // 	type: CLIENT_REDUCER_TYPES
 // 	payload: ISelfClient
 // }
+interface IPosts {
+	userId: number
+	id: number
+	title: string
+	body: string
+}
+export const receivePosts = createAsyncThunk('clients/receivePosts', async () => {
+	const res = await axios.get<IPosts[]>('https://jsonplaceholder.typicode.com/posts')
+	return res.data
+})
 
 const initialState: IClientsState = {
 	currentClient: {
@@ -20,14 +32,15 @@ const initialState: IClientsState = {
 		job: '',
 	},
 	clients: [],
+	posts: [],
 }
 
 const clientsSlice = createSlice({
 	name: 'clients',
 	initialState,
 	reducers: {
-		setAllClients: (state, action: PayloadAction<ISelfClient[]>) => {
-			state.clients = action.payload
+		setAllClients: (state, { payload }: PayloadAction<ISelfClient[]>) => {
+			state.clients = payload
 		},
 		setCurrentClient: (state, { payload }: PayloadAction<ISelfClient>) => {
 			state.currentClient = payload
@@ -38,6 +51,13 @@ const clientsSlice = createSlice({
 				currentClient = { ...currentClient, ...payload }
 			}
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(receivePosts.pending, (state, { payload }) => {})
+		builder.addCase(receivePosts.fulfilled, (state, { payload }: PayloadAction<IPosts[]>) => {
+			state.posts = payload
+		})
+		builder.addCase(receivePosts.rejected, (state, { payload }) => {})
 	},
 })
 

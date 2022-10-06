@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import clientsSlice from './features/clients/clientsSlice'
 import logger from 'redux-logger'
+
 const reducer = combineReducers({
 	clients: clientsSlice,
 })
