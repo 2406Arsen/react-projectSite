@@ -3,21 +3,22 @@ import { FiGithub } from "react-icons/fi";
 import { BsInstagram } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsLightningCharge } from "react-icons/bs";
-import { useDispatch } from 'react-redux';
 import { useEffect } from 'react'
-import { receivePosts } from '../../store/features/clients/clientsSlice';
-import { AppDispatch } from '../../store';
+import {
+    // fetchPosts,
+    receivePosts
+} from '../../store/features/posts/functions';
 import { useAppDispatch } from '../../store/hook';
 
 const Home = () => {
 
-    const dispatch: AppDispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
+
         dispatch(receivePosts())
+
     }, [dispatch])
-
-
 
     return (
         <>
