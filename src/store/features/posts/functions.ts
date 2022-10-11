@@ -1,12 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
+import { api } from '../../../Api/axios'
 // import { AppThunk } from '../..'
 
-import { IPosts } from './model'
+import { IPost } from './model'
 
 // import { receivePostsFailure, receivePostsSuccess, setLoading } from './postSlice'
 
-// export const fetchPosts = (): AppThunk => async (dispatch) => {
+//  export const fetchPosts = (): AppThunk => async (dispatch) => {
+
 // 	dispatch(setLoading(true))
 // 	try {
 // 		const res = await axios.get<IPosts[]>('https://jsonplaceholder.typicode.com/posts', {
@@ -22,7 +24,7 @@ export const receivePosts = createAsyncThunk(
 	'clients/receivePosts',
 	async (_, { rejectWithValue }) => {
 		try {
-			const res = await axios.get<IPosts[]>('https://jsonplaceholder.typicode.com/posts', {
+			const res = await api.get<IPost[]>('posts', {
 				params: { _limit: 10 },
 			})
 			return res.data
@@ -31,6 +33,17 @@ export const receivePosts = createAsyncThunk(
 				throw new Error()
 			}
 			return rejectWithValue('my Error')
+		}
+	},
+)
+export const createPost = createAsyncThunk(
+	'clients/createPost',
+	async (newPost: IPost, { rejectWithValue }) => {
+		try {
+			const res = await api.post<IPost>('posts', newPost)
+			return res.data
+		} catch (error) {
+			return rejectWithValue('something went wrong !!!')
 		}
 	},
 )

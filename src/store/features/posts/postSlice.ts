@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IPost } from '../../../Api/Api'
-import { receivePosts } from './functions'
+import { createPost, receivePosts } from './functions'
 import { IPostState } from './model'
 
 const initialState: IPostState = {
@@ -37,6 +37,18 @@ const postSlice = createSlice({
 			.addCase(receivePosts.rejected, (state, action) => {
 				state.loading = false
 				state.errors = action.payload as string
+			})
+		builder
+			.addCase(createPost.pending, (state) => {
+				state.loading = true
+			})
+			.addCase(createPost.fulfilled, (state, { payload }) => {
+				state.loading = false
+				state.posts.push(payload)
+			})
+			.addCase(createPost.rejected, (state, {payload}) => {
+				state.loading = false
+				state.errors = payload as string
 			})
 	},
 })

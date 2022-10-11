@@ -15,12 +15,13 @@ import RegistrationSucceed from './Pages/Registration/RegistrationSucceed';
 import Clients from './Pages/Clients/Clients';
 import { checkSessionIsAuth } from './Utils/checkSessionIsAuth';
 import { IFormInputValues } from './module';
-import { getUsersData } from './Api/Api';
+// import { getUsersData } from './Api/Api';
 // import Memoisation from './Pages/Memoisation/Memoisation';
 import MemoisationFunctions from './Pages/Memoisation/MemoisationFunctions';
 import MemoContext from './Pages/Memoisation/MemoContext';
 import CounterPage from './Pages/Counter/CounterPage';
 import ClientPage from './Pages/ClientPage/ClientPage';
+import CreatePostPage from './Pages/CreatePost/CreatePost';
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
         <Route path='/memoisation' element={<MemoContext />} />
         <Route path='/counter' element={<CounterPage />} />
         <Route path='/memoisationFunction' element={<MemoisationFunctions />} />
+        <Route path='/createPost' element={<CreatePostPage />} />
         <Route path='/about' element={
           <CheckOut isAuth={isAuth}>
             <AboutUs />
