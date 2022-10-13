@@ -22,6 +22,7 @@ import MemoContext from './Pages/Memoisation/MemoContext';
 import CounterPage from './Pages/Counter/CounterPage';
 import ClientPage from './Pages/ClientPage/ClientPage';
 import CreatePostPage from './Pages/CreatePost/CreatePost';
+import ValidationPage from './Pages/Validation/ValidationPage';
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
         <Route path='/counter' element={<CounterPage />} />
         <Route path='/memoisationFunction' element={<MemoisationFunctions />} />
         <Route path='/createPost' element={<CreatePostPage />} />
+        <Route path='/validation' element={<ValidationPage />} />
         <Route path='/about' element={
           <CheckOut isAuth={isAuth}>
             <AboutUs />
